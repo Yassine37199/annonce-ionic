@@ -1,0 +1,8 @@
+{
+  "name": "annonce-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "967a05f1"
+}
