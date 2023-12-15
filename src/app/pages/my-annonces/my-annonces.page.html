@@ -1,13 +1,47 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>my-annonces</ion-title>
+  <ion-toolbar color="success">
+    <ion-buttons slot="start">
+      <ion-menu-button auto-hide="false"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Mes annonces</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">my-annonces</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-fab
+    vertical="bottom"
+    horizontal="end"
+    slot="fixed"
+    (click)="toAddPage()"
+  >
+    <ion-fab-button name="add" color="success">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <ion-searchbar
+    placeholder="Chercher des annonces"
+    (ionInput)="onSearch($event)"
+  ></ion-searchbar>
+  <div *ngFor="let annonce of filteredAnnoncesList">
+    <ion-card (click)="navigateToAnnonce(annonce.id)">
+      <ion-card-header>
+        <ion-card-title>
+          <ion-avatar></ion-avatar>{{ annonce.titre }}</ion-card-title
+        >
+        <ion-card-subtitle>
+          {{ annonce.date_publication }}
+          <p class="localisation">
+            {{ annonce.localisation }}
+          </p></ion-card-subtitle
+        >
+      </ion-card-header>
+
+      <ion-card-content>
+        <p>{{ annonce.description }}</p>
+        <p class="money">
+          <ion-icon name="pricetag"></ion-icon>{{ annonce.prix }} DT
+        </p>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>

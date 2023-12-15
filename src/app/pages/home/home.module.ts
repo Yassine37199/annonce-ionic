@@ -7,10 +7,9 @@ import { IonicModule } from '@ionic/angular';
 import { HomePageRoutingModule } from './home-routing.module';
 
 import { HomePage } from './home.page';
-import { AnnonceCardComponent } from 'src/app/component/annonce-card/annonce-card.component';
 
 @NgModule({
   imports: [CommonModule, FormsModule, IonicModule, HomePageRoutingModule],
-  declarations: [HomePage, AnnonceCardComponent],
+  declarations: [HomePage],
 })
 export class HomePageModule {}

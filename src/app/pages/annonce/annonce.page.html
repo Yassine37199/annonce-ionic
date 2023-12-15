@@ -7,8 +7,8 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <img [src]="annonce.image" [alt]="annonce.title" />
+<ion-content *ngIf="annonce !== null" [fullscreen]="true">
+  <img [src]="annonce.image" [alt]="annonce.titre" />
   <ion-chip>
     <ion-label>{{annonce.prix}} DT</ion-label>
     <ion-icon name="pricetag" color="success"></ion-icon>
@@ -31,9 +31,9 @@
     </ion-card-header>
 
     <ion-card-content>
-      <p><span>Nom : </span>{{annonce.contact.nom}}</p>
-      <p><span>Email :</span> {{annonce.contact.email}}</p>
-      <p><span>Télèphone : </span>{{annonce.contact.telephone}}</p>
+      <p><span>Nom : </span>{{annonce.nom}}</p>
+      <p><span>Email :</span> {{annonce.email}}</p>
+      <p><span>Télèphone : </span>{{annonce.phone}}</p>
     </ion-card-content>
   </ion-card>
 </ion-content>

@@ -1,0 +1,48 @@
+<ion-content [fullscreen]="true">
+  <div class="flex-center">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title style="text-align: center" color="success"
+          >Annonces App</ion-card-title
+        >
+      </ion-card-header>
+
+      <ion-card-content>
+        <form #myForm="ngForm" (ngSubmit)="register(myForm)">
+          <ion-item>
+            <ion-label position="floating">Nom et prénom</ion-label>
+            <ion-input type="text" name="name" id="name" ngModel></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Email</ion-label>
+            <ion-input type="email" name="email" id="email" ngModel></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Télèphone</ion-label>
+            <ion-input type="tel" name="phone" id="phone" ngModel></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Password</ion-label>
+            <ion-input
+              id="password"
+              name="password"
+              type="password"
+              ngModel
+            ></ion-input>
+          </ion-item>
+
+          <ion-button type="submit" color="success" size="full"
+            >Register</ion-button
+          >
+          <ion-button
+            color="success"
+            fill="clear"
+            size="full"
+            (click)="toLoginPage()"
+            >Already have an account ?</ion-button
+          >
+        </form>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

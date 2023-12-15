@@ -4,6 +4,9 @@ import {
   AngularFireAuth,
   AngularFireAuthModule,
 } from '@angular/fire/compat/auth';
+import { Router } from '@angular/router';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -15,10 +18,30 @@ export class HomePage implements OnInit {
 
   filteredAnnoncesList = this.annoncesList;
 
-  constructor(private afAuth: AngularFireAuth) {}
+  constructor(
+    private firestore: AngularFirestore,
+    private afAuth: AngularFireAuth,
+    private router: Router
+  ) {}
 
   ngOnInit() {
-    this.login();
+    this.firestore
+      .collection('/annonces')
+      .snapshotChanges()
+      .pipe(
+        map((changes) =>
+          changes.map((change) => {
+            const data = change.payload.doc.data() as any;
+            const id = change.payload.doc.id;
+            return { id, ...data };
+          })
+        )
+      )
+      .subscribe((annonces: any[]) => {
+        console.log(annonces);
+        this.annoncesList = annonces;
+        this.filteredAnnoncesList = this.annoncesList;
+      });
   }
 
   onSearch(event: any) {
@@ -29,15 +52,22 @@ export class HomePage implements OnInit {
     });
   }
 
-  async login() {
-    try {
-      const result = await this.afAuth.signInWithEmailAndPassword(
-        'yassineouri@samrise.cloud',
-        'Password_test002'
-      );
-      console.log('User signed in:', result.user);
-    } catch (error) {
-      console.error('Error signing in');
-    }
+  navigateToAnnonce(id: any) {
+    console.log(id);
+    this.router.navigate(['annonce', id]);
+  }
+
+  logout(): void {
+    this.afAuth
+      .signOut()
+      .then(() => {
+        console.log('User logged out successfully.');
+
+        // Redirect to the login page
+        this.router.navigate(['login']);
+      })
+      .catch((error) => {
+        console.error('Error logging out:', error);
+      });
   }
 }
