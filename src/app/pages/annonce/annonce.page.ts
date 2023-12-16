@@ -12,19 +12,18 @@ export class AnnoncePage implements OnInit {
   id!: number;
   annonce = {
     id: 1,
-    titre: 'Appartement spacieux en centre-ville',
-    image:
-      'https://cf.bstatic.com/xdata/images/hotel/max1024x768/425798448.jpg?k=d5a00140692c6c6a6e7ad3f6e52181e5a788844b0c1eb933f982aae62799df7f&o=&hp=1',
-    description:
-      'Magnifique appartement récemment rénové, situé en plein cœur du centre-ville. Vue imprenable sur la ville.',
+    titre: '',
+    image: '',
+    description: '',
     prix: 1200,
-    localisation: 'Centre-ville',
-    date_publication: '2023-01-15',
-
-    nom: 'Jean Dupont',
-    email: 'jean.dupont@email.com',
-    phone: '123-456-7890',
+    localisation: '',
+    date_publication: '',
+    nom: '',
+    email: '',
+    phone: '',
   };
+
+  loaded: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -43,6 +42,7 @@ export class AnnoncePage implements OnInit {
         .valueChanges()
         .subscribe((annonce: any) => {
           this.annonce = annonce;
+          this.loaded = true;
           console.log('Annonce Details:', this.annonce);
         });
     } else {
