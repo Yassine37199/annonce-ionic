@@ -13,3 +13,10 @@ ion-spinner {
   width: 100px;
   height: 100px;
 }
+
+ion-buttons {
+  ion-icon {
+    margin-left: 20px;
+    cursor: pointer;
+  }
+}

@@ -3,6 +3,19 @@
     <ion-buttons slot="start">
       <ion-back-button text=""></ion-back-button>
     </ion-buttons>
+    <ion-buttons *ngIf="canDelete" slot="end">
+      <ion-icon
+        slot="icon-only"
+        color="primary"
+        name="create-outline"
+      ></ion-icon>
+      <ion-icon
+        (click)="deleteAnnonceById()"
+        slot="icon-only"
+        color="danger"
+        name="trash"
+      ></ion-icon>
+    </ion-buttons>
     <ion-title *ngIf="loaded">{{ annonce.titre}}</ion-title>
     <ion-title *ngIf="!loaded"
       ><ion-skeleton-text
