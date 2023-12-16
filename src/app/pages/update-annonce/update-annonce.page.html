@@ -1,0 +1,107 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="success">
+    <ion-buttons slot="start">
+      <ion-back-button text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>Modifier une annonce</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div *ngIf="loaded">
+    <form #myForm="ngForm" (ngSubmit)="updateAnnonce(myForm)">
+      <img [src]="annonce.image" />
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Informations</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+          <ion-item>
+            <ion-label position="floating">Titre</ion-label>
+            <ion-input
+              name="titre"
+              id="titre"
+              [(ngModel)]="annonce.titre"
+              type="text"
+            ></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Image</ion-label>
+            <ion-input
+              name="image"
+              id="image"
+              [(ngModel)]="annonce.image"
+              type="text"
+            ></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Description</ion-label>
+            <ion-textarea
+              type="text"
+              name="description"
+              id="description"
+              [(ngModel)]="annonce.description"
+            ></ion-textarea>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Prix</ion-label>
+            <ion-input
+              name="prix"
+              id="prix"
+              ngModel
+              type="number"
+              [(ngModel)]="annonce.prix"
+            ></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Localisation</ion-label>
+            <ion-input
+              name="localisation"
+              id="localisation"
+              [(ngModel)]="annonce.localisation"
+              type="text"
+            ></ion-input>
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Contact</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-item>
+            <ion-label position="floating">Nom</ion-label>
+            <ion-input
+              name="nom"
+              id="nom"
+              type="text"
+              [(ngModel)]="annonce.nom"
+            ></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Email</ion-label>
+            <ion-input
+              name="email"
+              id="email"
+              type="tel"
+              [(ngModel)]="annonce.email"
+            ></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Télèphone</ion-label>
+            <ion-input
+              type="tel"
+              name="phone"
+              id="phone"
+              [(ngModel)]="annonce.phone"
+            ></ion-input>
+          </ion-item>
+        </ion-card-content>
+        <ion-button type="submit" color="success" size="full"
+          >Modifier</ion-button
+        >
+      </ion-card>
+    </form>
+  </div>
+</ion-content>

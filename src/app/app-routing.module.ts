@@ -29,15 +29,28 @@ const routes: Routes = [
     path: 'login',
     loadChildren: () =>
       import('./pages/login/login.module').then((m) => m.LoginPageModule),
-  },  {
+  },
+  {
     path: 'register',
-    loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
+    loadChildren: () =>
+      import('./pages/register/register.module').then(
+        (m) => m.RegisterPageModule
+      ),
   },
   {
     path: 'add-annonce',
-    loadChildren: () => import('./pages/add-annonce/add-annonce.module').then( m => m.AddAnnoncePageModule)
+    loadChildren: () =>
+      import('./pages/add-annonce/add-annonce.module').then(
+        (m) => m.AddAnnoncePageModule
+      ),
   },
-
+  {
+    path: 'update-annonce/:id',
+    loadChildren: () =>
+      import('./pages/update-annonce/update-annonce.module').then(
+        (m) => m.UpdateAnnoncePageModule
+      ),
+  },
 ];
 
 @NgModule({

@@ -76,4 +76,8 @@ export class AnnoncePage implements OnInit {
         console.error('Error deleting annonce:', error);
       });
   }
+
+  toUpdatePage() {
+    this.router.navigate(['update-annonce', this.annonceId]);
+  }
 }

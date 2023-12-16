@@ -5,8 +5,9 @@
     </ion-buttons>
     <ion-buttons *ngIf="canDelete" slot="end">
       <ion-icon
+        (click)="toUpdatePage()"
         slot="icon-only"
-        color="primary"
+        color="dark"
         name="create-outline"
       ></ion-icon>
       <ion-icon
